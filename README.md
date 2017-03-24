@@ -60,3 +60,10 @@ Guard automatically listens for changes in your `spec` and `lib` folders
 and it will run the according spec files automatically when that happens.
 
 Once Guard is running, type <kbd>Enter</kbd> at any time to run all tests.
+
+## Homework
+
+You can spend the weekend on this as homework. Depending on your
+progress on Monday, you will either progress into the Real World
+Projects, or we may ask you to continue to work on it to practice more
+on your raw programming skills.
