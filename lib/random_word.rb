@@ -21,12 +21,18 @@ class RandomWord
   def count_incorrect_characters(characters)
     bad_guesses = 0
     characters.each do |char|
-      unless @word.include? char
+      unless self.word.include?(char)
         bad_guesses += 1
       end
     end
       return bad_guesses
     #should return the number of items in the array which aren't in the string
+  end
+
+  def contains? (player_selections)
+    sheriffWord = Set.new(self.word.split(//))
+    playerGuesses = Set.new(player_selections)
+    sheriffWord.subset?(playerGuesses)
   end
 
   def turn_word_into_empty_strings_array

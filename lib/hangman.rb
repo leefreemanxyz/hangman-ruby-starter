@@ -16,11 +16,12 @@ class Hangman
       getUserInput
       evaluate_guess
       if word_guessed?
+        puts "Dangit, I can't believe you guessed it. Well, guess I'll have to let you go. Now don't be bothering any more horses!"
         break
       end
     end
   end
-  
+
   def welcome
     puts "You were caught stealing horses from the townsfolk and the punishment for your crime is to be hanged until dead.\nBut the sheriff likes to play with words, so he'll spare your life, if you can guess the word that he's thinking of.\nYou can choose letters one at a time, and I'll let you know if the word contains that letter. If you guess a letter that isn't in the word 10 times, then I'm afraid it's the noose for you."
   end
@@ -46,7 +47,7 @@ class Hangman
   end
 
   def word_guessed?
-
+    @word.contains?(@player_selections)
   end
 
 
