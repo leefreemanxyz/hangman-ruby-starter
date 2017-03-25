@@ -7,7 +7,8 @@ class RandomWord
     @word = WORDS.sample
   end
 
-  def positions_for(characters)
+  def positions_for(characters: [])
+    puts characters
     positions = turn_word_into_empty_strings_array
     for i in 0...positions.length
       for j in 0...characters.length
@@ -15,6 +16,17 @@ class RandomWord
       end
     end
     return positions
+  end
+
+  def count_incorrect_characters(characters)
+    bad_guesses = 0
+    characters.each do |char|
+      unless @word.include? char
+        bad_guesses += 1
+      end
+    end
+      return bad_guesses
+    #should return the number of items in the array which aren't in the string
   end
 
   def turn_word_into_empty_strings_array
