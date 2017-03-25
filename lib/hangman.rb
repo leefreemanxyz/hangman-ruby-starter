@@ -22,7 +22,7 @@ class Hangman
       evaluate_guess
       print_progress_bar
       if word_guessed?
-        puts "Dangit, I can't believe you guessed it. Well, guess I'll have to let you go. Now don't be bothering any more horses!"
+        puts "Dangit, I can't believe you guessed it. Well, guess I'll have to let you go. Now don't be causing trouble around here again, y'hear me?!"
         break
       end
       print_divider
@@ -51,7 +51,7 @@ class Hangman
     when 3
       @bad_guesses_allowed = 5
     else
-      puts "I'm afraid I didn't quite get that"
+      puts "I'm afraid I didn't quite get that. Your silence suggests that you're probably a horse thief."
     end
     puts "Thanks, #{@player_name}. The sheriff is prepared to let you go if you can guess the word he is thinking of. Because of the severity of your crime, you can make #{@bad_guesses_allowed} incorrect attempts or it's the noose for you."
   end
