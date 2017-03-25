@@ -6,28 +6,54 @@ class Hangman
     @bad_guesses_allowed = 10
     @bad_guesses = 0
     @player_selections = []
+    @player_name = ""
   end
 
   def play!
     welcome
+    print_progress_bar
     difficultySelect
+    print_progress_bar
+
     while (@bad_guesses < @bad_guesses_allowed)
       displayBoard
       getUserInput
+      print_progress_bar
       evaluate_guess
+      print_progress_bar
       if word_guessed?
         puts "Dangit, I can't believe you guessed it. Well, guess I'll have to let you go. Now don't be bothering any more horses!"
         break
       end
+      print_divider
+    end
+    if !word_guessed?
+      puts "Afraid I'll have to get the noose for you."
     end
   end
 
   def welcome
-    puts "You were caught stealing horses from the townsfolk and the punishment for your crime is to be hanged until dead.\nBut the sheriff likes to play with words, so he'll spare your life, if you can guess the word that he's thinking of.\nYou can choose letters one at a time, and I'll let you know if the word contains that letter. If you guess a letter that isn't in the word 10 times, then I'm afraid it's the noose for you."
+    puts "Sheriff's office. It looks like I've lost my paperwork, remind me what your name was again."
+    @player_name = gets.chomp
   end
 
   def difficultySelect
-
+    puts "Hmm, we've got more than one #{@player_name} here. Were you #{@player_name} the vagrant? Or are you the infamous fraudster #{@player_name}? I hope you aren't #{@player_name} the horse thief!"
+    puts "1. #{@player_name} the drunkard"
+    puts "2. #{@player_name} the fraudster"
+    puts "3. #{@player_name} the horse thief"
+    response = gets.chomp.to_i
+    case response
+    when 1
+      @bad_guesses_allowed = 10
+    when 2
+      @bad_guesses_allowed = 7
+    when 3
+      @bad_guesses_allowed = 5
+    else
+      puts "I'm afraid I didn't quite get that"
+    end
+    puts "Thanks, #{@player_name}. The sheriff is prepared to let you go if you can guess the word he is thinking of. Because of the severity of your crime, you can make #{@bad_guesses_allowed} incorrect attempts or it's the noose for you."
   end
 
   def displayBoard
@@ -35,7 +61,7 @@ class Hangman
   end
 
   def getUserInput
-    puts "So, you feeling lucky, punk? Pick a letter and try to beat the hangman."
+    puts "Do you feel lucky, punk? Pick a letter and try to beat the hangman."
     selection = gets.chomp
     @player_selections << selection.downcase
   end
@@ -48,6 +74,16 @@ class Hangman
 
   def word_guessed?
     @word.contains?(@player_selections)
+  end
+
+  def print_divider
+    puts "*" * 40
+    puts "\n"
+  end
+
+  def print_progress_bar
+    3.times { sleep 0.5; print "." }
+    puts "\n"
   end
 
 

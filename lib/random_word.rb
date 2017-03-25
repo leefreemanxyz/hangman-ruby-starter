@@ -1,7 +1,7 @@
 class RandomWord
   attr_reader :word
 
-  WORDS = %w(programming monkeybusiness rubyesque styleguide)
+  WORDS = %w(vaquero buckaroo charro waddie wrangler gunsel forked rustler )
 
   def initialize
     @word = WORDS.sample
