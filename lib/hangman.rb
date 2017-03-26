@@ -12,12 +12,12 @@ class Hangman
   def play!
     welcome
     print_progress_bar
-    difficultySelect
+    difficulty_select
     print_progress_bar
 
     while (@bad_guesses < @bad_guesses_allowed)
-      displayBoard
-      getUserInput
+      display_board
+      get_user_input
       print_progress_bar
       evaluate_guess
       print_progress_bar
@@ -37,7 +37,7 @@ class Hangman
     @player_name = gets.chomp
   end
 
-  def difficultySelect
+  def difficulty_select
     puts "Hmm, we've got more than one #{@player_name} here. Were you #{@player_name} the vagrant? Or are you the infamous fraudster #{@player_name}? I hope you aren't #{@player_name} the horse thief!"
     puts "1. #{@player_name} the drunkard"
     puts "2. #{@player_name} the fraudster"
@@ -56,11 +56,11 @@ class Hangman
     puts "Thanks, #{@player_name}. The sheriff is prepared to let you go if you can guess the word he is thinking of. Because of the severity of your crime, you can make #{@bad_guesses_allowed} incorrect attempts or it's the noose for you."
   end
 
-  def displayBoard
+  def display_board
     puts "#{@word.positions_for(characters: @player_selections)}"
   end
 
-  def getUserInput
+  def get_user_input
     puts "Do you feel lucky, punk? Pick a letter and try to beat the hangman."
     selection = gets.chomp
     @player_selections << selection.downcase

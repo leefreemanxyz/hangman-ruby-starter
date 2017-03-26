@@ -30,9 +30,9 @@ class RandomWord
   end
 
   def contains? (player_selections)
-    sheriffWord = Set.new(self.word.split(//))
-    playerGuesses = Set.new(player_selections)
-    sheriffWord.subset?(playerGuesses)
+    sheriff_word = Set.new(self.word.split(//))
+    player_guesses = Set.new(player_selections)
+    sheriff_word.subset?(player_guesses)
   end
 
   def turn_word_into_empty_strings_array
